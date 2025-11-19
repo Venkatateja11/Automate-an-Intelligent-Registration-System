@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Frugal Testing Registration</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <h1>Registration</h1>
+      <p>Create your profile to get started.</p>
+    </header>
+
+    <!-- Top-form alert area -->
+    <div id="formAlert" class="alert" aria-live="polite" role="status"></div>
+
+    <form id="registrationForm" novalidate>
+      <!-- Row: Names -->
+      <div class="row">
+        <div class="form-group">
+          <label for="firstName">First Name *</label>
+          <input type="text" id="firstName" name="firstName" required />
+          <small class="error" id="firstNameError"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="lastName">Last Name *</label>
+          <input type="text" id="lastName" name="lastName" required />
+          <small class="error" id="lastNameError"></small>
+        </div>
+      </div>
+
+      <!-- Row: Email / Phone -->
+      <div class="row">
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" required />
+          <small class="hint">No disposable emails allowed (e.g., tempmail.com).</small>
+          <small class="error" id="emailError"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number *</label>
+          <input type="tel" id="phone" name="phone" required placeholder="+91 9876543210" />
+          <small class="hint">Must start with valid country code if country is selected.</small>
+          <small class="error" id="phoneError"></small>
+        </div>
+      </div>
+
+      <!-- Row: Age / Gender -->
+      <div class="row">
+        <div class="form-group">
+          <label for="age">Age</label>
+          <input type="number" id="age" name="age" min="0" max="130" />
+          <small class="error" id="ageError"></small>
+        </div>
+
+        <div class="form-group">
+          <label>Gender *</label>
+          <div class="checkbox-group" role="group" aria-labelledby="genderLabel">
+            <label><input type="checkbox" name="gender" value="Male" /> Male</label>
+            <label><input type="checkbox" name="gender" value="Female" /> Female</label>
+            <label><input type="checkbox" name="gender" value="Other" /> Other</label>
+          </div>
+          <small class="error" id="genderError"></small>
+        </div>
+      </div>
+
+      <!-- Row: Address -->
+      <div class="row">
+        <div class="form-group full">
+          <label for="address">Address</label>
+          <textarea id="address" name="address" rows="3" placeholder="Street, Area, ZIP"></textarea>
+          <small class="error" id="addressError"></small>
+        </div>
+      </div>
+
+      <!-- Row: Country / State / City -->
+      <div class="row">
+        <div class="form-group">
+          <label for="country">Country</label>
+          <select id="country" name="country">
+            <option value="">Select Country</option>
+          </select>
+          <small class="error" id="countryError"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="state">State</label>
+          <select id="state" name="state" disabled>
+            <option value="">Select State</option>
+          </select>
+          <small class="error" id="stateError"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="city">City</label>
+          <select id="city" name="city" disabled>
+            <option value="">Select City</option>
+          </select>
+          <small class="error" id="cityError"></small>
+        </div>
+      </div>
+
+      <!-- Row: Password -->
+      <div class="row">
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" />
+          <div class="strength">
+            <div id="strengthBar" class="bar"></div>
+            <span id="strengthLabel">Strength: —</span>
+          </div>
+          <small class="error" id="passwordError"></small>
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" />
+          <small class="error" id="confirmPasswordError"></small>
+        </div>
+      </div>
+
+      <!-- Terms -->
+      <div class="row">
+        <div class="form-group full">
+          <label class="terms">
+            <input type="checkbox" id="terms" name="terms" />
+            I agree to the Terms & Conditions *
+          </label>
+          <small class="error" id="termsError"></small>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="actions">
+        <button type="submit" id="submitBtn" disabled>Submit</button>
+        <button type="reset" id="resetBtn" class="secondary">Reset</button>
+      </div>
+    </form>
+
+    <!-- Success modal (optional) -->
+    <div id="successModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+      <div class="modal-content">
+        <h2 id="successTitle">Registration Successful!</h2>
+        <p>Your profile has been submitted successfully.</p>
+        <button id="successClose">Close</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <small>Frugal Testing Software Engineer • Demo Registration</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
